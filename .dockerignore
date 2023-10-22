@@ -7,3 +7,4 @@ docker/
 .dockerignore
 .env.sample
 .gitignore
+.log
