@@ -1,11 +1,6 @@
-"""Creates and registers the ping command."""
-
 from typing import TYPE_CHECKING
 
-from discord import (  # pylint: disable = no-name-in-module
-    ApplicationContext,
-    slash_command,
-)
+from discord import ApplicationContext, slash_command
 from discord.ext import commands
 
 if TYPE_CHECKING:
@@ -13,8 +8,6 @@ if TYPE_CHECKING:
 
 
 class PingCommand(commands.Cog):
-    """A command to check the latency (delay) between the bot and server."""
-
     def __init__(self, client: "TomNook") -> None:
         self.client = client
 

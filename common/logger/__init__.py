@@ -1,5 +1,3 @@
-"""_summary_"""
-
 import logging
 
 
@@ -41,7 +39,7 @@ class Logger:
         Args:
             msg (object): The message to log.
         """
-        self.logger.info(add_period_if_missing(msg))
+        self.logger.info(add_period_if_missing(str(msg)))
 
     def warn(self, msg: object):
         """Logs a warning-level message.
@@ -49,7 +47,7 @@ class Logger:
         Args:
             msg (object): The message to log.
         """
-        self.logger.warning(add_period_if_missing(msg))
+        self.logger.warning(add_period_if_missing(str(msg)))
 
     def err(self, msg: object):
         """Logs an error-level message.
@@ -57,7 +55,7 @@ class Logger:
         Args:
             msg (object): The message to log.
         """
-        self.logger.error(add_period_if_missing(msg))
+        self.logger.error(add_period_if_missing(str(msg)))
 
 
 logger = Logger(name="tom-nook")

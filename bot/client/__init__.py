@@ -1,5 +1,3 @@
-"""Creates the Discord bot client and registers any event handlers."""
-
 from discord.ext.commands import Bot
 
 from common.logger import logger
@@ -7,7 +5,7 @@ from common.logger import logger
 commands = ["ping"]
 
 
-class TomNook(Bot):  # pylint: disable=too-many-ancestors
+class TomNook(Bot):
     """The Discord bot client."""
 
     def __init__(self, **options):

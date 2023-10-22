@@ -1,5 +1,3 @@
-"""Defines the default config and environment variables used during runtime."""
-
 import os
 from typing import TypedDict
 
@@ -13,6 +11,6 @@ class TypedConfig(TypedDict):
 
 
 config: TypedConfig = {
-    **dotenv_values(".env"),
+    **dotenv_values(".env"),  # type: ignore
     **os.environ,
 }
