@@ -6,4 +6,4 @@ install: # Set up and install the Pipenv virtual environment
 # ================== App ================== #
 
 run: # Run the bot
-	pipenv run python bot
+	pipenv run python -m bot
