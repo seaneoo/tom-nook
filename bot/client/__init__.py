@@ -2,7 +2,7 @@
 
 from discord.ext.commands import Bot
 
-from logger import logger
+from common.logger import logger
 
 commands = ["ping"]
 
