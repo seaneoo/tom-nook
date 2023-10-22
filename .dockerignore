@@ -1,0 +1,9 @@
+# Directories
+.venv/
+.vscode/
+docker/
+
+# Files
+.dockerignore
+.env.sample
+.gitignore
