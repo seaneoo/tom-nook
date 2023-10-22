@@ -1,9 +1,9 @@
 """Creates the Discord bot client and registers any event handlers."""
 
-from discord import Client
+from discord.ext.commands import Bot
 
 
-class TomNook(Client):
+class TomNook(Bot):
     """The Discord bot client."""
 
     async def on_ready(self):
