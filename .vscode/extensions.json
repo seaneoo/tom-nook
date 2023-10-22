@@ -3,7 +3,6 @@
         "KevinRose.vsc-python-indent",
         "ms-python.black-formatter",
         "njpwerner.autodocstring",
-        "ms-python.python",
-        "ms-python.pylint"
+        "ms-python.python"
     ]
 }

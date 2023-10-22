@@ -4,10 +4,10 @@ install: # Set up and install the Pipenv virtual environment
 	pipenv install --python 3.11
 
 format: # Format the code with Black
-	pipenv run black bot
+	pipenv run black .
 
-lint: # Lint the code with Pylint
-	pipenv run pylint bot
+lint: # Lint the code with mypy
+	pipenv run mypy .
 
 format-lint: # Format and lint the code
 	make format
