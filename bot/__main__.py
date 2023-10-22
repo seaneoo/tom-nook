@@ -1,2 +1,4 @@
-if __name__ == "__main__":
-    ...
+from bot.client import client
+
+TOKEN = ""
+client.run(TOKEN)
