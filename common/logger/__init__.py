@@ -25,7 +25,7 @@ class Logger:
             "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
         )
         # set up file logging handler
-        file_handler = logging.FileHandler(filename=filename, mode="a")
+        file_handler = logging.FileHandler(filename=filename, mode="a", encoding="utf8")
         file_handler.setFormatter(formatter)
         self.logger.addHandler(file_handler)
         # set up console logging handler
