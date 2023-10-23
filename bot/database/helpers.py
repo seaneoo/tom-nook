@@ -49,3 +49,19 @@ def insert_guilds(session: "Session", *guilds: "DiscordGuild"):
             s.commit()
         except Exception as e:
             logger.err(e)
+
+
+def select_all_guilds(session: "Session") -> list[Guild]:
+    with session as s:
+        try:
+            return s.query(Guild).all()
+        except Exception as e:
+            logger.err(e)
+
+
+def select_guild(session: "Session", guild: "DiscordGuild") -> Guild | None:
+    with session as s:
+        try:
+            return s.query(Guild).filter(Guild.guild_id == str(guild.id)).first()
+        except Exception as e:
+            logger.err(e)
