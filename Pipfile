@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 py-cord = ">=2.4"
 python-dotenv = "*"
+sqlalchemy = "*"
+psycopg = {version = "*", extras = ["binary"]}
 
 [dev-packages]
 black = "*"
