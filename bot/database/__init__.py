@@ -17,14 +17,23 @@ class Base(metaclass=DeclarativeMeta):
 
 class Guild(Base):
     __table__ = Table(
-        "Guilds",
+        "guilds",
         Base.metadata,
-        Column("GuildID", String, primary_key=True),
-        Column("CreatedAt", DateTime, default=datetime.now()),
+        Column("guild_id", String, primary_key=True),  # The unique ID for the guild
+        Column(
+            "channel_id", String, nullable=True, default=None
+        ),  # The ID of the guild's channel to send messages in
+        Column(
+            "last_sent", DateTime, nullable=True, default=None
+        ),  # The timestamp the birthday message was last sent
+        Column(
+            "created_at", DateTime, default=datetime.now()
+        ),  # The timestamp the row was created
     )
 
-    def __init__(self, guild_id):
+    def __init__(self, guild_id, channel_id):
         self.guild_id = guild_id
+        self.channel_id = channel_id
 
 
 engine = create_engine("postgresql+psycopg://username:password@localhost:5432/tomnook")
