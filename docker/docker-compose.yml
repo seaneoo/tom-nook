@@ -2,8 +2,26 @@ version: '3'
 name: 'tom-nook'
 
 services:
+  db:
+    image: postgres:16.0-alpine3.18
+    volumes:
+      - ./pg:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: tomnook
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+
   bot:
     build:
       context: ../
       dockerfile: docker/Dockerfile
+    depends_on:
+      - db
     restart: unless-stopped
+
+volumes:
+  pg: {}
