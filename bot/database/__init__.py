@@ -32,5 +32,10 @@ engine = create_engine("postgresql+psycopg://username:password@localhost:5432/to
 Base.metadata.create_all(bind=engine)
 
 
-def session():
+def session() -> Session:
+    """Constructs a new session using the database engine.
+
+    Returns:
+        Session: The ORM session.
+    """
     return Session(engine)
