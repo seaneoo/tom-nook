@@ -5,7 +5,7 @@ services:
   db:
     image: postgres:16.0-alpine3.18
     volumes:
-      - ./pg:/var/lib/postgresql/data
+      - ../data/db_data:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: tomnook
       POSTGRES_USER: username
@@ -24,4 +24,4 @@ services:
     restart: unless-stopped
 
 volumes:
-  pg: {}
+  db_data: {}
