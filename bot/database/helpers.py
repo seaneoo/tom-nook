@@ -21,7 +21,12 @@ def insert_guilds(session: "Session", *guilds: "DiscordGuild"):
         try:
             # Map each Discord guild to a Guild ORM object
             guild_orms = [
-                Guild(guild_id=guild.id, channel_id=guild.system_channel.id)
+                Guild(
+                    guild_id=guild.id,
+                    channel_id=guild.system_channel.id
+                    if guild.system_channel
+                    else None,
+                )
                 for guild in guilds
             ]
             # Get the column values for each Guild ORM object
