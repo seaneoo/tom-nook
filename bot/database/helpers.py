@@ -12,26 +12,27 @@ if TYPE_CHECKING:
 
 
 def insert_guilds(session: "Session", *discord_guilds: "DiscordGuild"):
-    with session as s:
-        try:
-            guilds = [
-                Guild(
-                    guild_id=dg.id,
-                    channel_id=dg.system_channel.id if dg.system_channel else None,
+    if len(discord_guilds) > 0:
+        with session as s:
+            try:
+                guilds = [
+                    Guild(
+                        guild_id=dg.id,
+                        channel_id=dg.system_channel.id if dg.system_channel else None,
+                    )
+                    for dg in discord_guilds
+                ]
+
+                statement = (
+                    insert(Guild)
+                    .values([guild.to_dict() for guild in guilds])
+                    .on_conflict_do_nothing(index_elements=["guild_id"])
                 )
-                for dg in discord_guilds
-            ]
 
-            statement = (
-                insert(Guild)
-                .values([guild.to_dict() for guild in guilds])
-                .on_conflict_do_nothing(index_elements=["guild_id"])
-            )
-
-            s.execute(statement)
-            s.commit()
-        except Exception as e:
-            logger.err(e)
+                s.execute(statement)
+                s.commit()
+            except Exception as e:
+                logger.err(e)
 
 
 def select_all_guilds(session: "Session") -> list[Guild] | None:
