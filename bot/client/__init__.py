@@ -1,3 +1,4 @@
+from discord import Guild, Intents
 from discord.ext.commands import Bot
 
 from bot.database import session
@@ -21,8 +22,15 @@ class TomNook(Bot):
     async def on_ready(self):
         """Called when the client is done preparing the data received from Discord."""
         logger.info(f"🚀 Ready! Logged on as {self.user}.")
-
         insert_guilds(session(), *self.guilds)
 
+    async def on_guild_join(self, guild: Guild):
+        """Called when the client joins a guild."""
+        insert_guilds(session(), guild)
+        logger.info(f"Joined Guild ID# {guild.id}")
 
-client = TomNook()
+
+intents = Intents.default()
+intents.guilds = True
+
+client = TomNook(intents=intents)
